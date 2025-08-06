@@ -1,0 +1,220 @@
+@media print {
+
+*{
+    border: 1px solid red !important;
+}
+
+.mark-container {
+
+    /*height: 100%;*/
+
+    min-width: 1500px;
+
+    position: relative;
+
+    margin: 0 auto;
+
+    /*font-size: 10px;*/
+    background-color: rgba(255, 255, 255, .9);
+
+}
+
+
+
+.table tr th {
+
+    font-weight: bold !important;
+
+}
+
+
+
+table th {
+
+    font-weight: normal;
+
+    vertical-align: top;
+
+}
+
+table td,
+
+table th {
+
+    padding: 8px 4px;
+    border: 1px solid black !important;
+
+}
+
+table.template-footer {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid black;
+}
+table.template-footer td {
+    border: 0;
+}
+
+
+.table-bordered {
+
+    border-color: black !important;
+
+}
+
+
+    .pagebreak {
+
+        clear: both;
+
+        page-break-before: always;
+
+    }
+
+    .table-bordered thead tr th,
+.table-bordered tbody tr th,
+.table-bordered tfoot tr th,
+.table-bordered thead tr td,
+.table-bordered tbody tr td,
+.table-bordered tfoot tr td {
+    border-color: black !important;
+    text-align: left;
+    background: transparent !important;
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+
+    .mark-container {
+        height: 100%;
+        min-width: 1300px;
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        font-size: 10px;
+        padding: 3px;
+        max-width: 1500px;
+    }
+    .branch-name h4 {
+        font-size: 18px;
+    }
+    .marksheet-head table.table.table-bordered {
+        margin: 0 !important;
+        border: 2px solid black;
+        width: 100% !important;
+    }
+    .marksheet-user img {
+        float: right;
+        display: none !important;
+    }
+    table.academic-record-heading {
+        border: 2px solid black;
+        margin-bottom: 0px !important;
+        text-align: center;
+    }
+    table.academic-record-heading h5 {
+    /*margin: 5px 0;*/
+    font-size: 18px;
+}
+.pass-marking > div {
+    float: left;
+    text-align: center;
+    color: #000;
+    font-size: 14px;
+    /*margin-bottom: 20px;*/
+}
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    border-collapse: collapse;
+    border: 2px solid black;
+    clear: both;
+    width: 100%;
+    border-spacing: 0;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    display: block;
+}
+table.template-footer {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    float: left;
+    width: 100%;
+    border-color: black;
+}
+
+table.academic-record-heading {
+    width: 100%;
+    background-color: #0F335C;
+    color: #fff;
+    text-align: center;
+}
+.branch-name h4 {
+    color: #0F335C;
+}
+.row.company-header strong {
+    color: #0F335C;
+}
+.row.company-header {
+    color: #AD00AB;
+}
+table.row.company-header, table.row.company-header td {
+    border: none !important;
+}
+table.academic-record-heading h5 {
+    margin: 0;
+}
+    .pass-mark {
+        width: 20%;
+        float: left;
+        text-align: center;
+    }
+    .pass-marking {
+        width: 100%;
+        float: left;
+    }
+    .marksheet-head {
+        width: 85% !important;
+        float: left;
+    }
+    table td {
+        border-color: 2px solid black !important;
+    }
+    .row.company-header {
+        float: left;
+        width: 100%;
+    }
+    .logo img {
+        max-width: 100px !important;
+        width: 100px !important;
+        height: auto !important;
+        float: left;
+    }
+    .branch-name h4 {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+    .marksheet-user {
+        width: 15% !important;
+        text-align: right !important;
+        margin: 0 !important;
+        float: right;
+    }
+    .attendance-grading {
+        float: left;
+        width: 100%;
+    }
+    .attendance {
+        float: left;
+        width: 48%;
+        padding-right: 14px;
+    }
+    .grading {
+        float: left;
+        width: 48%;
+        padding-left: 13px;
+    }
+
+}

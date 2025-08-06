@@ -1,0 +1,160 @@
+<section class="panel">
+	<div class="tabs-custom">
+		<ul class="nav nav-tabs">
+			<li>
+				<a href="<?=base_url('exam')?>"><i class="fas fa-list-ul"></i> <?=translate('exam_list')?></a>
+			</li>
+			<li class="active">
+				<a href="#create" data-toggle="tab"><i class="far fa-edit"></i> <?=translate('edit_exam')?></a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="create">
+				<?php echo form_open($this->uri->uri_string(), array('class' => 'frm-submit'));?>
+				<div class="form-horizontal form-bordered mb-lg">
+					<input type="hidden" name="exam_id" value="<?=$exam['id']?>">
+					<input type="hidden" name="branch_id" value="<?=$exam['branch_id']?>">
+						
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('name')?> <span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="name" value="<?=$exam['name']?>" />
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-group">
+                            <label class="col-md-3 control-label"><?=translate('reference_exam')?></label>
+                            <div class="col-md-6">
+                                <?php
+                                    $array = $this->app_lib->getSelectByBranch('exam', $exam['branch_id']);
+                                    if (empty($array)) {
+                                        echo "No exams available for this branch."; 
+                                    } else {
+                                        echo form_dropdown("parent_exam_id", $array, $exam['parent_exam_id'], "class='form-control' id='parent_exam_id'
+                                        data-plugin-selectTwo data-width='100%' data-minimum-results-for-search='Infinity' ");
+                                    }
+                                ?>
+                                <span class="error"></span>
+                            </div>
+                        </div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('term')?></label>
+							<div class="col-md-6">
+								<?php
+									$array = $this->app_lib->getSelectByBranch('exam_term', $exam['branch_id']);
+									echo form_dropdown("term_id", $array, $exam['term_id'], "class='form-control' id='term_id'
+									data-plugin-selectTwo data-width='100%' data-minimum-results-for-search='Infinity' ");
+								?>
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('exam_type')?></label>
+							<div class="col-md-6">
+								<?php
+									$arrayType = array(
+										'' => translate('select'), 
+										'1' => translate('marks'), 
+										'2' => translate('grade'), 
+										'3' => translate('marks_and_grade'), 
+										'4' => translate('playgroup'),
+									);
+									echo form_dropdown("type_id", $arrayType, $exam['type_id'], "class='form-control' id='type_id'
+									data-plugin-selectTwo data-width='100%' data-minimum-results-for-search='Infinity' ");
+								?>
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('mark_distribution')?></label>
+							<div class="col-md-6">
+								<?php
+									$sel = json_decode($exam['mark_distribution'], true);
+									$arraySection = array();
+									$result = $this->db->where('branch_id', $exam['branch_id'])->get('exam_mark_distribution')->result();
+									foreach ($result as $row) {
+										$arraySection[$row->id] = $row->name;
+									}
+									echo form_dropdown("mark_distribution[]", $arraySection, $sel, "class='form-control' multiple id='mark_distribution'
+									data-plugin-selectTwo data-width='100%'");
+								?>
+								<span class="error"></span>
+							</div>
+						</div>
+						<div class="form-group">
+						    <label class="col-md-3 control-label">
+						        <?=translate('unique_identifier')?>
+						        <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6">
+                				<select name="unique_identifier" class="form-control">
+                                    <option value="">Select identifier</option>
+                                    <option value="1st_ca" <?php if ($exam['unique_identifier'] == '1st_ca') { echo "selected"; } ?>>1ST CA</option>
+                                    <option value="2nd_ca" <?php if ($exam['unique_identifier'] == '2nd_ca') { echo "selected"; } ?>>2ND CA</option>
+                                    <option value="examination" <?php if ($exam['unique_identifier'] == 'examination') { echo "selected"; } ?>>EXAMINATION</option>
+                                </select>
+                                <span class="error"><?=form_error('unique_identifier')?></span>
+                            </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-md-3 control-label">
+						        <?=translate('exam_category')?>
+						        <span class="required">*</span>
+						    </label>
+						    <div class="col-md-6">
+                				<select name="exam_category" class="form-control">
+                                    <option value="normal" <?php if ($exam['exam_category'] == 'normal') { echo "selected"; } ?>>Normal</option>
+                                    <option value="islamia" <?php if ($exam['exam_category'] == 'islamia') { echo "selected"; } ?>>Islamia</option>
+                                </select>
+                                <span class="error"><?=form_error('exam_category')?></span>
+                            </div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('remarks')?></label>
+							<div class="col-md-6 mb-sm">
+								<textarea rows="2" class="form-control" name="remark"><?=$exam['remark']?></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+						<label class="col-md-3 control-label"></label>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-lg-4">
+									<input type="date" class="form-control" name="start_terms" id="date_1" placeholder="This Term Starts" value="<?= isset($exam['start_terms']) ? date('Y-m-d', strtotime($exam['start_terms'])) : '' ?>">
+									<span class="error"></span>
+								</div>
+								<div class="col-lg-4">
+									<input type="date" class="form-control" name="end_terms" id="date_2" placeholder="This Term Ends" value="<?= isset($exam['end_terms']) ? date('Y-m-d', strtotime($exam['end_terms'])) : '' ?>">
+									<span class="error"></span>
+								</div>
+								<div class="col-lg-4">
+									<input type="date" class="form-control" name="next_terms" id="date_3" placeholder="Next Term Starts" value="<?= isset($exam['next_terms']) ? date('Y-m-d', strtotime($exam['next_terms'])) : '' ?>">
+									<span class="error"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"><?=translate('publish')?></label>
+							<div class="col-md-6">
+								<div class="material-switch ml-xs">
+									<input id="aswitch_1" name="exam_publish" <?php echo $exam['status'] == 1 ? 'checked' : '' ?> type="checkbox" />
+									<label for="aswitch_1" class="label-primary"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<footer class="panel-footer">
+						<div class="row">
+							<div class="col-md-offset-3 col-md-2">
+								<button type="submit" class="btn btn-default btn-block" data-loading-text="<i class='fas fa-spinner fa-spin'></i> Processing">
+									<i class="fas fa-plus-circle"></i> <?=translate('update')?>
+								</button>
+							</div>
+						</div>
+					</footer>
+				<?php echo form_close();?>
+			</div>
+		</div>
+	</div>
+</section>

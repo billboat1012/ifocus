@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;\n            padding: 50px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .message {
+            font-size: 24px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Betty John-Bepeh, Completed Successfully</h1>
+    <p class="message">Original Certificate!</p>
+</body>
+</html>

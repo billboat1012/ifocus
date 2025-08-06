@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# # Allow static files to load without redirection
+    RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|otf|map)$ [NC]
+
+    # Block Googlebot, Bingbot, and Amazonbot
+    RewriteCond %{HTTP_USER_AGENT} Googlebot/2.1 [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} bingbot/2.0 [NC,OR]
+#     RewriteRule ^(.*)$ - [F,L]
+
+
+
+RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>

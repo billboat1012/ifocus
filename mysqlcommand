@@ -1,0 +1,16 @@
+CREATE TABLE pdf_queue (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  status ENUM('pending','processing','done','error') DEFAULT 'pending',
+  student_ids TEXT,
+  exam_id INT,
+  class_id INT,
+  section_id INT,
+  session_id INT,
+  branch_id INT,
+  template_id INT,
+  print_date DATE,
+  file_path VARCHAR(255),
+  error TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
